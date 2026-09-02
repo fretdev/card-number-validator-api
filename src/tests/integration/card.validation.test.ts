@@ -76,4 +76,26 @@ describe("POST /api/cards/validate", () => {
         expect(response.body.message).toBe("Invalid request")
         expect(response.body.errors.fieldErrors.cardNumber).toBeDefined()
     })
+    it("should return 400 when card number contains only whitespace", async () => {
+    const response = await request(app)
+        .post("/api/cards/validate")
+        .send({
+            cardNumber: "   "
+        })
+
+    expect(response.status).toBe(400)
+    expect(response.body.message).toBe("Invalid request")
+    expect(response.body.errors.fieldErrors.cardNumber).toBeDefined()
+})
+it("should return 400 when the request contains invalid JSON", async () => {
+    const response = await request(app)
+        .post("/api/cards/validate")
+        .set("Content-Type", "application/json")
+        .send('{"cardNumber":')
+
+    expect(response.status).toBe(400)
+    expect(response.body).toEqual({
+        message: "Invalid JSON"
+    })
+})
 })

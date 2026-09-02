@@ -23,7 +23,7 @@ describe("validateCardNumber",()=>{
   it("should return true for a valid 13 digit card number",()=>{
     expect(validateCardNumber("1234567890128")).toBe(true)
   })
-  it("should return true for a valid 19 card number",()=>{
+  it("should return true for a valid 19 digit card number",()=>{
     expect(validateCardNumber("4000000000000000006")).toBe(true)
   })
   it("should return true for a valid card number containing spaces",()=>{
@@ -32,7 +32,7 @@ describe("validateCardNumber",()=>{
   it("should return true for a card number containing hyphens",()=>{
       expect(validateCardNumber("4012-8888-8888-1881")).toBe(true)
     })
-  it("should returen false when the card number contain a decimal point",()=>{
+  it("should return false when the card number contain a decimal point",()=>{
     expect(validateCardNumber("4012.8888.8888.1881")).toBe(false)
   })
   it("should return false when the card number contains unsupported symbols",()=>{
@@ -41,4 +41,11 @@ describe("validateCardNumber",()=>{
   it("should return false when the card number contains letters with formatting",()=>{
     expect(validateCardNumber("4012-8888-8888-18a1")).toBe(false)
   })
+  it("should return false for whitespace-only input", () => {
+    expect(validateCardNumber("   ")).toBe(false)
+})
+
+it("should return false when the input contains only formatting characters", () => {
+    expect(validateCardNumber("--- ---")).toBe(false)
+})
 })
