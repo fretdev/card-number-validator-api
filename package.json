@@ -5,6 +5,8 @@
   "main": "dist/server.js",
   "scripts": {
     "test": "jest",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
     "start": "node src/server.js",
     "dev": "tsx watch src/server.ts",
     "build": "tsc"
