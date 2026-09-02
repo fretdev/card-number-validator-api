@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/fretdev/card-number-validator-api#readme",
   "dependencies": {
+    "@types/node": "^26.4.0",
     "express": "^5.2.1",
+    "typescript": "^7.0.2",
     "zod": "^4.5.4"
   },
   "devDependencies": {
@@ -33,12 +35,10 @@
     "@babel/preset-typescript": "^7.29.7",
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.4.0",
     "@types/supertest": "^7.2.1",
     "babel-jest": "^30.5.1",
     "jest": "^30.5.1",
     "supertest": "^7.2.2",
-    "tsx": "^4.23.13",
-    "typescript": "^7.0.2"
+    "tsx": "^4.23.13"
   }
 }
