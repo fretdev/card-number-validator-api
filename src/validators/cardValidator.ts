@@ -1,13 +1,19 @@
 export function validateCardNumber(cardNumber: string): boolean{
-    if (!/^\d+$/.test(cardNumber)) {
+    if (!/^[\d -]+$/.test(cardNumber)) {
     return false;
-}
+   }
+
+   const normalizedCardNumber = cardNumber.replace(/[\s-]/g, "")
+
+   if(normalizedCardNumber.length < 13 || normalizedCardNumber.length > 19){
+    return false
+   }
 
     let sum = 0
     let shouldDouble = false
 
-    for (let i = cardNumber.length - 1; i >= 0 ;i--){
-        let digit = parseInt(cardNumber[i]!, 10)
+    for (let i = normalizedCardNumber.length - 1; i >= 0 ;i--){
+        let digit = parseInt(normalizedCardNumber[i]!, 10)
             if(shouldDouble){
                 digit *= 2
                 if(digit > 9){
@@ -17,5 +23,5 @@ export function validateCardNumber(cardNumber: string): boolean{
         sum += digit
         shouldDouble = !shouldDouble 
     }
-    return sum % 10 == 0
+    return sum % 10 === 0
 }
