@@ -1,6 +1,10 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
   "exclude": [
-    "src/tests"
+    "src/tests",
+    "dist"
   ]
 }
